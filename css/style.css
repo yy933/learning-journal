@@ -184,6 +184,26 @@ header {
   overflow: hidden;
 }
 
+.post-tags-container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0.25rem 0;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.post-tags-container li {
+  cursor: pointer;
+  list-style: none;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  color: #555;
+  font-weight: 500;
+  font-size: 0.7rem;
+}
+
 /* view more btn styles */
 .view-more-container {
   display: flex;
