@@ -16,8 +16,7 @@ function renderPosts(data) {
               <span class="date">${date}</span>
               <h3>${title}</h3>
               <ul class="post-tags-container">
-                <li>JavaScript</li>
-                <li>Programming</li>
+               ${tags.map(tag => `<li>${tag}</li>`).join('')}
               </ul>
               <p>
                 ${content}
@@ -30,4 +29,3 @@ function renderPosts(data) {
 }
 
 renderPosts(postsData);
-
