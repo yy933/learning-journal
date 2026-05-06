@@ -1,4 +1,5 @@
 export function renderNavbar() {
+  const currentPath = window.location.pathname;
   const navHTML = `
       <div class="logo">
         <i class="fa-solid fa-comment-dots fa-2xl"></i>
@@ -6,8 +7,8 @@ export function renderNavbar() {
       </div>
       <nav class="navbar">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about/">About</a></li>
+          <li><a href="/" class="${currentPath === "/" ? "active" : ""}">Home</a></li>
+          <li><a href="/about/" class="${currentPath.includes("about") ? "active" : ""}">About</a></li>
         </ul>
       </nav>`;
   document.querySelector("header").innerHTML = navHTML;
