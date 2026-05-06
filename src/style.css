@@ -5,6 +5,7 @@
 
 html,
 body {
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   font-family: "Source Sans 3", sans-serif;
@@ -227,4 +228,30 @@ header {
   color: #007bff;
   border-color: #007bff;
   padding-bottom: 8px;
+}
+
+/* footer */
+footer {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.25rem 0;
+  background-color: #202020;
+  color: #d7d7d7;
+}
+
+.footer-mainText {
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 700;
+  margin: 0.6rem auto 0.2rem;
+}
+
+.footer-copyright {
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  margin: 0 auto 0.6rem;
 }
