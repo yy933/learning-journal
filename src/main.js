@@ -1,4 +1,6 @@
 import { postsData } from "./data/postsData";
+import { renderNavbar } from "./components/navbar.js";
+import { renderFooter } from "./components/footer.js";
 
 const postsGrid = document.querySelector(".posts-grid");
 
@@ -28,4 +30,6 @@ function renderPosts(data) {
   postsGrid.innerHTML = postsHtml;
 }
 
+renderNavbar()
+renderFooter()
 renderPosts(postsData);
