@@ -152,12 +152,41 @@ header {
 }
 
 /* filter section styles */
+
+.filter-wrapper {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.filter-wrapper::after,
+.filter-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.filter-wrapper::after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+}
+
+.filter-wrapper::before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+}
+
 .filter-section {
   display: flex;
   gap: 0.75rem;
   overflow-x: auto;
   padding: 2rem 3rem 1rem;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -173,7 +202,7 @@ header {
   color: #333;
   font-weight: 500;
   font-size: 0.8rem;
-  border: 1px solid #e0e0e0 ;
+  border: 1px solid #e0e0e0;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s;
