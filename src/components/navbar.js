@@ -1,10 +1,10 @@
 export function renderNavbar() {
   const currentPath = window.location.pathname;
   const navHTML = `
-      <div class="logo">
+      <a href="/" class="logo">
         <i class="fa-solid fa-comment-dots fa-2xl"></i>
         <h1>My Learning Journal</h1>
-      </div>
+      </a>
       <nav class="navbar">
         <ul>
           <li><a href="/" class="${currentPath === "/" ? "active" : ""}">Home</a></li>

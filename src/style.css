@@ -59,11 +59,17 @@ header {
 }
 
 .logo {
+  text-decoration: none;
+  color: inherit;
   display: flex;
   align-items: center;
   gap: 0.6rem;
 }
 
+.logo:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 4px;
+}
 .logo i {
   font-size: 1.5rem;
   color: #1a1a1a;
@@ -212,7 +218,7 @@ header {
   color: white;
 }
 
-.back-to-all-btn{
+.back-to-all-btn {
   cursor: pointer;
   border: none;
   background-color: #ffffff;
@@ -224,7 +230,7 @@ header {
   transition: all 0.2s ease;
 }
 
-.back-to-all-btn:hover{
+.back-to-all-btn:hover {
   color: #007bff;
 }
 
@@ -319,7 +325,6 @@ header {
   padding-bottom: 4px;
   transition: all 0.2s ease;
 }
-
 
 .view-more-btn:hover {
   color: #007bff;
