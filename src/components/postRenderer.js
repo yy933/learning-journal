@@ -22,6 +22,7 @@ export function renderPosts(data, container, count = 0) {
             <img
               src="${image}"
               alt="${title}"
+              loading="lazy"
             />
             <div class="post-content">
               <span class="date">${date}</span>
