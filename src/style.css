@@ -103,6 +103,11 @@ header {
   color: #007bff;
 }
 
+.navbar a:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 4px;
+}
+
 /* banner styles */
 .banner {
   display: flex;
