@@ -5,7 +5,10 @@ import { renderFooter } from "./components/footer.js";
 
 const postsGrid = document.querySelector(".posts-grid");
 const filterContainer = document.querySelector(".filter-section");
+const viewMoreBtn = document.querySelector(".view-more-btn");
 const allTags = ["All", ...new Set(postsData.flatMap((post) => post.tags))];
+let visibleCount = 6;
+let currentTag = "All";
 
 filterContainer.addEventListener("click", (e) => {
   const btn = e.target.closest(".tag-btn");
@@ -27,6 +30,28 @@ postsGrid.addEventListener("click", (e) => {
   });
 });
 
+viewMoreBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  visibleCount += 6;
+  refreshPosts();
+});
+
+function refreshPosts() {
+  const filteredData =
+    currentTag === "All"
+      ? postsData
+      : postsData.filter((post) => post.tags.includes(currentTag));
+
+  renderPosts(filteredData, postsGrid, visibleCount);
+
+  const viewMoreBtn = document.querySelector(".view-more-container");
+  if (visibleCount >= filteredData.length) {
+    viewMoreBtn.style.display = "none";
+  } else {
+    viewMoreBtn.style.display = "flex";
+  }
+}
+
 // render all tags in filter section
 function renderAllTags() {
   filterContainer.innerHTML = allTags
@@ -44,17 +69,11 @@ function renderAllTags() {
     .join("");
 }
 
-
-
 // handle filter
 function handleFilter(selectedTag) {
-  const filteredData =
-    selectedTag === "All"
-      ? postsData
-      : postsData.filter((post) => post.tags.includes(selectedTag));
-
-  // re-render posts
-  renderPosts(filteredData, postsGrid);
+  currentTag = selectedTag;
+  visibleCount = 6;
+  refreshPosts();
 
   // update UI
   updateFilterBtns(selectedTag);
@@ -71,5 +90,5 @@ function updateFilterBtns(selectedTag) {
 
 renderNavbar();
 renderFooter();
-renderPosts(postsData, postsGrid);
+refreshPosts();
 renderAllTags();
