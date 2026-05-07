@@ -185,7 +185,6 @@ header {
   gap: 0.75rem;
   overflow-x: auto;
   padding: 2rem 3rem 1rem;
-  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
@@ -211,6 +210,22 @@ header {
 .tag-btn.active {
   background: #007bff;
   color: white;
+}
+
+.back-to-all-btn{
+  cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  color: #333;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+}
+
+.back-to-all-btn:hover{
+  color: #007bff;
 }
 
 /* blog posts styles */
@@ -304,6 +319,7 @@ header {
   padding-bottom: 4px;
   transition: all 0.2s ease;
 }
+
 
 .view-more-btn:hover {
   color: #007bff;

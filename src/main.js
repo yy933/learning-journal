@@ -44,6 +44,8 @@ function renderAllTags() {
     .join("");
 }
 
+
+
 // handle filter
 function handleFilter(selectedTag) {
   const filteredData =
