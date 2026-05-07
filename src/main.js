@@ -50,7 +50,7 @@ function renderAllTags() {
 function handleFilter(selectedTag) {
   const filteredData =
     selectedTag === "All"
-      ? postData
+      ? postsData
       : postsData.filter((post) => post.tags.includes(selectedTag));
 
   // re-render posts
