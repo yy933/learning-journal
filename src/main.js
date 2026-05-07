@@ -14,6 +14,19 @@ filterContainer.addEventListener("click", (e) => {
   handleFilter(tag);
 });
 
+postsGrid.addEventListener("click", (e) => {
+  const li = e.target.closest(".post-tags-container li");
+  if (!li) return;
+  const clickedTag = li.textContent.trim();
+  handleFilter(clickedTag);
+
+  // scroll to top after filtering
+  window.scrollTo({
+    top: filterContainer.offsetTop - 100,
+    behavior: "smooth",
+  });
+});
+
 // render all tags in filter section
 function renderAllTags() {
   filterContainer.innerHTML = allTags
