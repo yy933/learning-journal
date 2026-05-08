@@ -13,17 +13,31 @@ export function renderPosts(data, container, count = 0) {
     container.style.textAlign = "center";
     return;
   }
-  
+
   const postsHtml = [...data]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, count > 0 ? count : data.length)
-    .map((post) => {
-      const { date, title, tags, content, image} = post;
+    .map((post, index) => {
+      const { date, title, tags, content, image } = post;
+      // if first post, set fetchpriority to high
+      const isFirstPost = index === 0;
+      const fetchPriorityAttr = isFirstPost ? 'fetchpriority="high"' : "";
+      const loadingAttr = isFirstPost ? "eager" : "lazy";
+      // get optimzed image based on screen width
+      const srcset = `
+        ${getOptimizedImage(image, 400)} 400w,
+        ${getOptimizedImage(image, 600)} 600w,
+        ${getOptimizedImage(image, 900)} 900w
+      `;
       return `<article class="post">
             <img
               src="${getOptimizedImage(image, 600)}"
+              srcseet="${srcset}"
+              sizes="(max-width: 600px) 400px, 600px"
               alt="${title}"
-              loading="lazy"
+              ${fetchPriorityAttr}
+              loading="${loadingAttr}"
+              decoding="async"
             />
             <div class="post-content">
               <span class="date">${date}</span>
