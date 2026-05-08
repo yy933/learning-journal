@@ -7,7 +7,7 @@ import { renderPosts, getOptimizedImage } from "./components/postRenderer";
 const profileImage = document.querySelector(".profile-section img");
 
 function getOptimizedProfileImage() {
-  return profileImage.src = getOptimizedImage(profileImage.src, 400);
+  return (profileImage.src = getOptimizedImage(profileImage.src, 400));
 }
 
 const postsGrid = document.querySelector(".posts-grid");
@@ -15,4 +15,4 @@ const postsGrid = document.querySelector(".posts-grid");
 renderNavbar();
 renderFooter();
 renderPosts(postsData, postsGrid, 5);
-getOptimizedProfileImage()
+getOptimizedProfileImage();
