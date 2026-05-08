@@ -16,6 +16,8 @@ Check out the live site here: https://mylearningjournalblog.netlify.app/
 
 - **Gradient Scroll Mask**: A sophisticated CSS mask effect on the filter bar to indicate scrollable content on mobile devices.
 
+- **Performance-First Hero Section**: Optimized the hero banner using HTML `<img>` with `fetchpriority="high"` and `preload`strategies for near-instant visual loading.
+
 - **Responsive & Accessible**: Uses `clamp()` for fluid typography and ARIA attributes (`aria-pressed`) for screen reader support.
 
 ## 🛠️ Technical Highlights
@@ -23,6 +25,14 @@ Check out the live site here: https://mylearningjournalblog.netlify.app/
 - **Architecture**: Modular JavaScript (ESM) with a component-based approach (navbar.js, postRenderer.js, etc.).
 
 - **Build Tool**: Powered by Vite for fast development and optimized production bundling.
+
+- **Performance Optimization (Web Vitals)**:
+
+  - **LCP Optimization**: Leveraged Netlify Image CDN for on-the-fly WebP compression and resizing.
+
+  - **Critical Path**: Minimized render-blocking resources by deferring non-essential scripts and using `font-display: swap`.
+
+  - **Layout Stability**: Explicitly defined image dimensions and stacking contexts to achieve a near-zero **Cumulative Layout Shift (CLS)**.
 
 - **CSS Mastery**:
   - **Grid auto-fill**: Ensures consistent card sizing regardless of the number of posts.
@@ -36,14 +46,15 @@ Check out the live site here: https://mylearningjournalblog.netlify.app/
 ```.
 learning-journal/
 ├── src/
-│   ├── components/      # Reusable UI components (Renderer, Nav, Footer)
+│   ├── components/      # UI logic (Renderer, Nav, Footer, Optimization helpers)
 │   ├── data/            # Local data source (postsData.js)
-│   ├── assets/          # Global styles and banner images
-│   ├── main.js          # Main logic (Filtering, Event Listeners)
-│   └── style.css        # Core stylesheet with responsive logic
-├── public/              # Static assets (Favicons, Post images)
-├── index.html           # Entry point
-└── vite.config.js       # Vite configuration
+│   ├── main.js          # Core application logic & event orchestration
+│   └── style.css        # Responsive styles with CSS Variables
+├── public/
+│   ├── images/          # Static assets & banner (optimized via Netlify CDN)
+│   └── favicons/        # Branding assets
+├── index.html           # Optimized entry point with resource hints
+└── vite.config.js       # Build configuration
 ```
 
 ## 🛠️ Future Roadmap
@@ -53,6 +64,8 @@ learning-journal/
 - [x] Add a "View More" functionality to load additional posts.
 
 - [x] Create a localized "About Me" page logic.
+
+- [x] **Performance Tuning**: Implement Netlify Image CDN and Preload strategies.
 
 - [ ] Implement Dark Mode toggle (System preference & Manual switch).
 
