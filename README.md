@@ -26,14 +26,6 @@ Check out the live site here: https://mylearningjournalblog.netlify.app/
 
 - **Build Tool**: Powered by Vite for fast development and optimized production bundling.
 
-- **Performance Optimization (Web Vitals)**:
-
-  - **LCP Optimization**: Leveraged Netlify Image CDN for on-the-fly WebP compression and resizing.
-
-  - **Critical Path**: Minimized render-blocking resources by deferring non-essential scripts and using `font-display: swap`.
-
-  - **Layout Stability**: Explicitly defined image dimensions and stacking contexts to achieve a near-zero **Cumulative Layout Shift (CLS)**.
-
 - **CSS Mastery**:
   - **Grid auto-fill**: Ensures consistent card sizing regardless of the number of posts.
   - **Flexbox**: Used for complex alignment in headers and post metadata.
@@ -41,6 +33,14 @@ Check out the live site here: https://mylearningjournalblog.netlify.app/
 
 - **Data Driven**: Centralized `postsData.js` acts as a local API for the entire application.
 
+### ⚡ Performance Results
+> **LCP reduced from 7.6s to 1.9s** (a 75% improvement) by implementing Netlify Image CDN and optimizing resource fetching priorities.
+
+- **Architecture**: Modular JavaScript (ESM) with a logic-component separation (postRenderer.js, filters.js, etc.).
+- **Web Vitals Optimization**:
+  - **LCP Optimization**: Leveraged **Netlify Image CDN** for on-the-fly WebP compression and dynamic resizing.
+  - **Critical Path**: Minimized render-blocking resources by deferring non-essential scripts and using `font-display: swap`.
+  - **Layout Stability**: Explicitly defined image dimensions and stacking contexts to achieve a near-zero **Cumulative Layout Shift (CLS)**.
 ## 📂 Project Structure
 
 ```.
