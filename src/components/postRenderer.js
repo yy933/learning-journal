@@ -32,7 +32,7 @@ export function renderPosts(data, container, count = 0) {
       return `<article class="post">
             <img
               src="${getOptimizedImage(image, 600)}"
-              srcseet="${srcset}"
+              srcset="${srcset}"
               sizes="(max-width: 600px) 400px, 600px"
               alt="${title}"
               ${fetchPriorityAttr}
