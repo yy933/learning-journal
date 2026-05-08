@@ -6,9 +6,23 @@ import { renderFooter } from "./components/footer.js";
 const postsGrid = document.querySelector(".posts-grid");
 const filterContainer = document.querySelector(".filter-section");
 const viewMoreBtn = document.querySelector(".view-more-btn");
+const viewMoreContainer = document.querySelector(".view-more-container");
+
+// initialize data and states
 const allTags = ["All", ...new Set(postsData.flatMap((post) => post.tags))];
 let visibleCount = 6;
 let currentTag = "All";
+
+const init = () => {
+  renderNavbar(); // top priority
+  refreshPosts();
+
+  // postpone non-urgent tasks
+  setTimeout(() => {
+    renderAllTags();
+    renderFooter();
+  }, 0);
+};
 
 filterContainer.addEventListener("click", (e) => {
   const btn = e.target.closest(".tag-btn");
@@ -22,18 +36,14 @@ postsGrid.addEventListener("click", (e) => {
   if (!li) return;
   const clickedTag = li.textContent.trim();
   handleFilter(clickedTag);
-
-  // scroll to top after filtering
-  window.scrollTo({
-    top: filterContainer.offsetTop - 100,
-    behavior: "smooth",
-  });
 });
 
 viewMoreBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  visibleCount += 6;
-  refreshPosts();
+  if (viewMoreBtn) {
+    visibleCount += 6;
+    refreshPosts();
+  }
 });
 
 function refreshPosts() {
@@ -44,11 +54,9 @@ function refreshPosts() {
 
   renderPosts(filteredData, postsGrid, visibleCount);
 
-  const viewMoreBtn = document.querySelector(".view-more-container");
-  if (visibleCount >= filteredData.length) {
-    viewMoreBtn.style.display = "none";
-  } else {
-    viewMoreBtn.style.display = "flex";
+  if (viewMoreContainer) {
+    viewMoreContainer.style.display =
+      visibleCount >= filteredData.length ? "none" : "flex";
   }
 }
 
@@ -71,12 +79,21 @@ function renderAllTags() {
 
 // handle filter
 function handleFilter(selectedTag) {
+  if (currentTag === selectedTag) return;
+
   currentTag = selectedTag;
   visibleCount = 6;
   refreshPosts();
-
   // update UI
   updateFilterBtns(selectedTag);
+
+  // only scroll to top when window scroll deeply down
+  if (window.scrollY > filterContainer.offsetTop) {
+    window.scrollTo({
+      top: filterContainer.offsetTop - 80,
+      behavior: "smooth",
+    });
+  }
 }
 
 function updateFilterBtns(selectedTag) {
@@ -88,7 +105,5 @@ function updateFilterBtns(selectedTag) {
   });
 }
 
-renderNavbar();
-renderFooter();
-refreshPosts();
-renderAllTags();
+// initialization
+init();
