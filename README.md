@@ -41,6 +41,10 @@ Check out the live site here: https://mylearningjournalblog.netlify.app/
   - **LCP Optimization**: Leveraged **Netlify Image CDN** for on-the-fly WebP compression and dynamic resizing.
   - **Critical Path**: Minimized render-blocking resources by deferring non-essential scripts and using `font-display: swap`.
   - **Layout Stability**: Explicitly defined image dimensions and stacking contexts to achieve a near-zero **Cumulative Layout Shift (CLS)**.
+- **Task Prioritization**: Refactored `init()` logic to prioritize LCP-related elements (Navbar and Hero Posts) while deferring non-critical UI tasks (Footer, Tags) using asynchronous scheduling.
+
+- **DOM Caching**: Reduced overhead by caching frequently accessed elements (like `viewMoreContainer`), minimizing expensive DOM lookups during filter and pagination events.
+
 ## 📂 Project Structure
 
 ```.
