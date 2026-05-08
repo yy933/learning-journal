@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <title>My Learning Journal</title>
     <!-- preload images -->
-    <link rel="preload" as="image" href="images/banner.webp" fetchpriority="high">
+    <link
+      rel="preload"
+      as="image"
+      href="/.netlify/images?url=%2Fimages%2Fbanner.jpg&w=1200&q=80&fm=webp"
+      fetchpriority="high"
+    />
     <!-- style sheet -->
     <link rel="stylesheet" href="/src/style.css" />
     <!-- google fonts -->
@@ -27,6 +32,13 @@
     <main>
       <!-- banner -->
       <section class="banner">
+        <img
+          src="/.netlify/images?url=%2Fassets%2Fbanner.jpg&w=1200&q=80&fm=webp"
+          alt="My new journey as a bootcamp student"
+          class="banner-img"
+          fetchpriority="high"
+        />
+        <div class="banner-overlay"></div>
         <div class="banner-content">
           <span class="date">January 10, 2023</span>
           <h2>My new journey as a bootcamp student</h2>
@@ -42,7 +54,7 @@
           class="filter-section container"
           aria-label="Filtered posts by tags"
         >
-         <!-- tags will be rendered by JavaScript -->
+          <!-- tags will be rendered by JavaScript -->
         </section>
       </div>
 
