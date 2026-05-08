@@ -44,6 +44,7 @@ Check out the live site here: https://mylearningjournalblog.netlify.app/
 - **Task Prioritization**: Refactored `init()` logic to prioritize LCP-related elements (Navbar and Hero Posts) while deferring non-critical UI tasks (Footer, Tags) using asynchronous scheduling.
 
 - **DOM Caching**: Reduced overhead by caching frequently accessed elements (like `viewMoreContainer`), minimizing expensive DOM lookups during filter and pagination events.
+- **Dependency Streamlining**: Replaced the entire Font Awesome library with a single **Optimized Inline SVG** for the logo, eliminating an external render-blocking HTTP request and reducing the total bundle size.
 
 ## 📂 Project Structure
 
