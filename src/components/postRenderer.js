@@ -13,14 +13,15 @@ export function renderPosts(data, container, count = 0) {
     container.style.textAlign = "center";
     return;
   }
+  
   const postsHtml = [...data]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, count > 0 ? count : data.length)
     .map((post) => {
-      const { id, date, title, tags, content, image } = post;
+      const { date, title, tags, content, image} = post;
       return `<article class="post">
             <img
-              src="${image}"
+              src="${getOptimizedImage(image, 600)}"
               alt="${title}"
               loading="lazy"
             />
@@ -39,4 +40,9 @@ export function renderPosts(data, container, count = 0) {
     .join("");
   container.style.display = "grid";
   container.innerHTML = postsHtml;
+}
+
+// get optimized image
+export function getOptimizedImage(src, width = 800) {
+  return `/.netlify/images?url=${encodeURIComponent(src)}&w=${width}&q=80&fm=webp`;
 }
